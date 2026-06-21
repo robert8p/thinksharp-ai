@@ -36,3 +36,7 @@ Destination: /index.html
 Action: Rewrite
 
 Do not paste a live OpenAI key into a public web deployment until the AI calls are behind a secure backend/proxy.
+
+
+Important Blueprint note:
+Do not set plan: free for this Static Site. Render static sites use type: web + runtime: static, and the fixed render.yaml intentionally omits plan.

@@ -118,7 +118,7 @@ This is the simplest Render path because this repo includes `render.yaml`.
 4. Connect/select your GitHub repository.
 5. Render will detect `render.yaml`.
 6. Service name should show as `thinksharp-ai`.
-7. Leave optional secrets blank for demo mode.
+7. No secrets are required for demo mode.
 8. Click **Apply** / **Create** / **Deploy**.
 9. Wait for the deploy to finish.
 10. Open the `.onrender.com` URL Render gives you.
@@ -150,13 +150,7 @@ EXPO_PUBLIC_OPENAI_MODEL = gpt-4.1-mini
 EXPO_PUBLIC_MOCK_PREMIUM = false
 ```
 
-6. Leave these blank for demo mode:
-
-```text
-EXPO_PUBLIC_SUPABASE_URL
-EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY
-EXPO_PUBLIC_OPENAI_API_KEY
-```
+6. Do not add Supabase or OpenAI variables for the first demo deployment. The app is designed to run without them.
 
 7. Add this rewrite rule in Render if it is not already created:
 
@@ -245,3 +239,10 @@ NODE_VERSION = 22.13.0
 # Recommended first deployment
 
 Deploy demo mode first. Do not add Supabase or OpenAI keys yet. Once the app is live, then move to the next tranche: persistent Supabase sync and a secure AI proxy.
+
+
+---
+
+## Error: services[0].plan no such plan free for service type web
+
+Use this fixed package. The corrected `render.yaml` does not include `plan: free`. If you already uploaded the previous package, replace the old `render.yaml` in GitHub with the new one from this ZIP, commit the change, and redeploy on Render.

@@ -2,21 +2,12 @@ services:
   - type: web
     name: thinksharp-ai
     runtime: static
-    plan: free
     buildCommand: npm install && npm run build:render
     staticPublishPath: ./dist
     autoDeployTrigger: commit
-    previews:
-      generation: automatic
     envVars:
       - key: NODE_VERSION
         value: "22.13.0"
-      - key: EXPO_PUBLIC_SUPABASE_URL
-        sync: false
-      - key: EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY
-        sync: false
-      - key: EXPO_PUBLIC_OPENAI_API_KEY
-        sync: false
       - key: EXPO_PUBLIC_OPENAI_MODEL
         value: gpt-4.1-mini
       - key: EXPO_PUBLIC_MOCK_PREMIUM

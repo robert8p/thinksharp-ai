@@ -148,6 +148,7 @@ Included deployment files:
 - `.nvmrc` and `engines.node` — Node 22.13+ runtime hint.
 - `public/_redirects` — portable SPA fallback for static hosts that support Netlify-style redirects.
 - `docs/GITHUB_RENDER_DEPLOYMENT.md` — detailed deployment guide.
+- `RENDER_TROUBLESHOOTING.md` — fixes for common Render deployment errors.
 
 ### Push to GitHub
 
@@ -166,8 +167,8 @@ git push -u origin main
 2. In Render, choose **New > Blueprint**.
 3. Select the GitHub repository.
 4. Render reads `render.yaml` from the repo root.
-5. Fill any environment variables marked `sync: false`, or leave them blank for demo/mock mode.
-6. Apply the Blueprint.
+5. Apply the Blueprint. No secrets are required for demo/mock mode.
+6. Add Supabase/OpenAI environment variables later only when you are ready to connect real services.
 
 The Blueprint uses:
 
@@ -180,6 +181,8 @@ and publishes:
 ```bash
 ./dist
 ```
+
+The Blueprint intentionally does **not** include `plan: free`; Render static sites are defined with `type: web` and `runtime: static`, and adding `plan: free` can cause Blueprint validation errors.
 
 ### Deploy to Render manually
 
