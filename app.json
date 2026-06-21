@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "ThinkSharp AI",
+    "slug": "thinksharp-ai",
+    "scheme": "thinksharpai",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#07111F"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.thinksharp.ai"
+    },
+    "android": {
+      "package": "com.thinksharp.ai",
+      "adaptiveIcon": {
+        "backgroundColor": "#07111F"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single"
+    },
+    "experiments": {
+      "typedRoutes": true
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "00000000-0000-0000-0000-000000000000"
+      }
+    }
+  }
+}

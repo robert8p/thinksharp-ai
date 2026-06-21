@@ -1,0 +1,38 @@
+ThinkSharp AI — Render Static Site Settings
+
+Use these if deploying manually instead of Blueprint.
+
+Service type:
+Static Site
+
+Repository:
+Your GitHub thinksharp-ai repository
+
+Branch:
+main
+
+Root Directory:
+Leave blank
+
+Build Command:
+npm install && npm run build:render
+
+Publish Directory:
+dist
+
+Environment variables for first demo deployment:
+NODE_VERSION=22.13.0
+EXPO_PUBLIC_OPENAI_MODEL=gpt-4.1-mini
+EXPO_PUBLIC_MOCK_PREMIUM=false
+
+Leave blank for first demo deployment:
+EXPO_PUBLIC_SUPABASE_URL
+EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+EXPO_PUBLIC_OPENAI_API_KEY
+
+Rewrite rule:
+Source: /*
+Destination: /index.html
+Action: Rewrite
+
+Do not paste a live OpenAI key into a public web deployment until the AI calls are behind a secure backend/proxy.

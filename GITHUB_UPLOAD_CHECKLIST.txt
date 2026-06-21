@@ -1,0 +1,17 @@
+ThinkSharp AI — GitHub Upload Checklist
+
+Before deploying to Render, your GitHub repository should show these at the top level:
+
+[ ] render.yaml
+[ ] package.json
+[ ] app.json
+[ ] README.md
+[ ] START_HERE_NO_CODE_DEPLOYMENT.md
+[ ] app/
+[ ] src/
+[ ] supabase/
+[ ] public/
+[ ] docs/
+
+If you only see one folder named thinksharp-ai, the upload is nested incorrectly.
+Render Blueprint needs render.yaml at the repository root.

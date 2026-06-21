@@ -1,0 +1,9 @@
+{
+  "name": "ThinkSharp AI",
+  "short_name": "ThinkSharp",
+  "description": "Your daily workout for better judgment in the AI age.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07111F",
+  "theme_color": "#07111F"
+}
