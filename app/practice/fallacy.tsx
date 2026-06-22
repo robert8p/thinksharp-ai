@@ -3,30 +3,29 @@ import { router } from 'expo-router';
 import { AppText } from '@/components/AppText';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
+import { CoachBubble } from '@/components/CoachBubble';
+import { FunHeader } from '@/components/FunHeader';
 import { OptionCard } from '@/components/OptionCard';
 import { Screen } from '@/components/Screen';
-import { fallacyDrills } from '@/data/seedContent';
-import { useAppStore } from '@/features/app/store';
-import { isAnswerCorrect } from '@/features/progress/mastery';
-import { colors } from '@/theme/theme';
+import { questions, useAppStore } from '@/features/app/store';
 
 export default function FallacySpotterScreen() {
-  const question = fallacyDrills[0];
-  const [answer, setAnswer] = useState<string>();
+  const fallacyQuestions = questions.filter((question) => question.skillArea === 'logic').slice(0, 3);
+  const [answers, setAnswers] = useState<Record<string, string>>({});
   const [score, setScore] = useState<number | null>(null);
   const completePractice = useAppStore((state) => state.completePractice);
+  const submit = () => setScore(completePractice(fallacyQuestions.map((question) => question.id), answers));
   return (
     <Screen>
-      <AppText variant="h2">Fallacy Spotter</AppText>
-      <Card><AppText>{question.prompt}</AppText></Card>
-      {question.options.map((option) => <OptionCard key={option} label={option} selected={answer === option} onPress={() => setAnswer(option)} />)}
-      {score === null ? <Button disabled={!answer} onPress={() => setScore(completePractice([question.id], { [question.id]: answer ?? '' }))}>Submit</Button> : (
-        <Card>
-          <AppText variant="h2">{score}%</AppText>
-          <AppText style={{ color: isAnswerCorrect(answer, question.correctAnswer) ? colors.success : colors.warning }}>{question.explanation}</AppText>
-          <Button onPress={() => router.back()}>Done</Button>
+      <FunHeader emoji="🕵️" title="Fallacy Spotter" subtitle="Find the argument trap before it finds you." />
+      <CoachBubble text="You are not trying to win an argument. You are trying to see the structure clearly." />
+      {fallacyQuestions.map((question) => (
+        <Card key={question.id}>
+          <AppText>{question.prompt}</AppText>
+          {question.options.map((option) => <OptionCard key={option} label={option} selected={answers[question.id] === option} onPress={() => setAnswers({ ...answers, [question.id]: option })} />)}
         </Card>
-      )}
+      ))}
+      {score === null ? <Button onPress={submit}>Check my answers</Button> : <Card playful><AppText variant="h2">{score}%</AppText><AppText>{score >= 85 ? 'Badge energy. You spotted the trap.' : 'Useful miss. These items are now review fuel.'}</AppText><Button onPress={() => router.back()}>Back</Button></Card>}
     </Screen>
   );
 }

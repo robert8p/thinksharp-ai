@@ -53,3 +53,30 @@ Full dependency install still exceeded this sandbox's execution timeout, so full
 npm install
 npm run ci
 ```
+
+## Humanity rename and friendly redesign validation
+
+Additional changes in this package:
+
+- Renamed app, Expo slug, package name, Render service, web manifest, docs, and share copy to **Humanity**.
+- Reworked visual theme from serious dark premium to bright, friendly, rounded, quest-based UI.
+- Added reusable UI components: `FunHeader`, `CoachBubble`, and `StatPill`.
+- Updated onboarding, home, learning map, progress, AI tools, paywall, and profile screens to use beginner-friendly language and playful quest mechanics.
+- Rebranded premium tier as **Humanity Plus**.
+- Generated a new simple app icon for Humanity.
+- Added `HUMANITY_REDESIGN_NOTES.md`.
+
+Validation performed after redesign:
+
+- Confirmed `app.json`, `package.json`, and `public/site.webmanifest` parse as valid JSON.
+- Confirmed legacy brand references were removed from the app and deployment package.
+- Attempted `npm install --ignore-scripts --no-audit --no-fund`; dependency installation again exceeded the sandbox timeout before completion.
+
+Run this locally or in GitHub Actions after uploading to GitHub:
+
+```bash
+npm install
+npm run ci
+```
+
+Known limitation: because dependencies could not be fully installed in this sandbox, full TypeScript, Jest, and Expo web export validation still need to run through GitHub Actions or your local machine after upload.

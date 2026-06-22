@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import { AppText } from '@/components/AppText';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
+import { CoachBubble } from '@/components/CoachBubble';
 import { OptionCard } from '@/components/OptionCard';
 import { ProgressBar } from '@/components/ProgressBar';
 import { Screen } from '@/components/Screen';
@@ -29,16 +30,17 @@ export default function DiagnosticScreen() {
   return (
     <Screen>
       <View style={{ gap: 8 }}>
-        <AppText variant="small">Question {index + 1} of {diagnosticQuestions.length}</AppText>
+        <AppText variant="small">Quest {index + 1} of {diagnosticQuestions.length}</AppText>
         <ProgressBar value={progress} />
       </View>
-      <Card>
+      <CoachBubble text="Pick the best answer. Don’t overthink it — the goal is to find your starting level." emoji="🧩" />
+      <Card playful>
         <AppText variant="h3">{question.prompt}</AppText>
       </Card>
       {question.options.map((option) => (
         <OptionCard key={option} label={option} selected={selected === option} onPress={() => setAnswers({ ...answers, [question.id]: option })} />
       ))}
-      <Button disabled={!selected} onPress={next}>{index === diagnosticQuestions.length - 1 ? 'Show my profile' : 'Next'}</Button>
+      <Button disabled={!selected} onPress={next}>{index === diagnosticQuestions.length - 1 ? 'Reveal my map' : 'Next quest'}</Button>
     </Screen>
   );
 }

@@ -50,7 +50,7 @@ export function recommendDailyTraining(args: {
     return {
       id: 'daily-ai-challenge',
       title: 'Challenge an overconfident AI answer',
-      reason: 'AI literacy is your best next sharpening area.',
+      reason: 'AI literacy is your best next training area.',
       skillFocus: skill,
       mode: 'challenge_ai' as const
     };

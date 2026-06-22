@@ -1,4 +1,4 @@
-# ThinkSharp AI — No-Code GitHub + Render Deployment
+# Humanity — No-Code GitHub + Render Deployment
 
 This package is ready to deploy as a web app on Render without editing code.
 
@@ -34,14 +34,14 @@ public/
 Wrong layout:
 
 ```text
-thinksharp-ai/
+humanity/
   render.yaml
   package.json
   app/
   src/
 ```
 
-If GitHub shows a single folder called `thinksharp-ai` and all files are inside it, Render Blueprint deployment may not find `render.yaml`.
+If GitHub shows a single folder called `humanity` and all files are inside it, Render Blueprint deployment may not find `render.yaml`.
 
 ---
 
@@ -54,7 +54,7 @@ Use this if you do not want to install GitHub Desktop.
 1. Go to GitHub.
 2. Click **+** in the top-right.
 3. Click **New repository**.
-4. Repository name: `thinksharp-ai`.
+4. Repository name: `humanity`.
 5. Choose **Private** or **Public**.
 6. Do **not** tick “Add a README file”.
 7. Click **Create repository**.
@@ -67,7 +67,7 @@ Use this if you do not want to install GitHub Desktop.
 4. Select the files and folders inside that folder.
 5. Drag them into GitHub’s upload area.
 6. Wait for the upload to finish.
-7. Commit message: `Initial ThinkSharp AI app`.
+7. Commit message: `Initial Humanity app`.
 8. Click **Commit changes**.
 
 ### 3. Check GitHub layout
@@ -86,7 +86,7 @@ Use this if the browser upload is awkward.
 
 1. Go to GitHub.
 2. Click **+ > New repository**.
-3. Repository name: `thinksharp-ai`.
+3. Repository name: `humanity`.
 4. Do **not** add a README.
 5. Click **Create repository**.
 
@@ -94,15 +94,15 @@ Use this if the browser upload is awkward.
 
 1. Open GitHub Desktop.
 2. Click **File > Clone repository**.
-3. Choose the new `thinksharp-ai` repository.
+3. Choose the new `humanity` repository.
 4. Click **Clone**.
 
 ### 3. Copy the app files into the cloned folder
 
-1. Open the cloned `thinksharp-ai` folder on your computer.
+1. Open the cloned `humanity` folder on your computer.
 2. Open the unzipped package folder in another window.
 3. Copy everything from the package folder that contains `render.yaml`, `package.json`, `app`, `src`, and `supabase` into the cloned GitHub folder.
-4. In GitHub Desktop, enter summary: `Initial ThinkSharp AI app`.
+4. In GitHub Desktop, enter summary: `Initial Humanity app`.
 5. Click **Commit to main**.
 6. Click **Push origin**.
 
@@ -117,7 +117,7 @@ This is the simplest Render path because this repo includes `render.yaml`.
 3. Click **Blueprint**.
 4. Connect/select your GitHub repository.
 5. Render will detect `render.yaml`.
-6. Service name should show as `thinksharp-ai`.
+6. Service name should show as `humanity`.
 7. No secrets are required for demo mode.
 8. Click **Apply** / **Create** / **Deploy**.
 9. Wait for the deploy to finish.
@@ -135,7 +135,7 @@ The app should run in demo mode without Supabase or OpenAI keys.
 4. Use these settings:
 
 ```text
-Name: thinksharp-ai
+Name: humanity
 Branch: main
 Root Directory: leave blank
 Build Command: npm install && npm run build:render

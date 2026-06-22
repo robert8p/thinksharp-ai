@@ -4,7 +4,9 @@ import { View } from 'react-native';
 import { AppText } from '@/components/AppText';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
+import { CoachBubble } from '@/components/CoachBubble';
 import { OptionCard } from '@/components/OptionCard';
+import { ProgressBar } from '@/components/ProgressBar';
 import { Screen } from '@/components/Screen';
 import { lessons, questions, useAppStore } from '@/features/app/store';
 import { isAnswerCorrect } from '@/features/progress/mastery';
@@ -30,27 +32,31 @@ export default function LessonScreen() {
 
   return (
     <Screen>
-      <AppText variant="small">{lesson.estimatedMinutes} min · mastery threshold {lesson.masteryThreshold}%</AppText>
+      <View style={{ gap: 8 }}>
+        <AppText variant="small">{lesson.estimatedMinutes} min · pass mark {lesson.masteryThreshold}%</AppText>
+        <ProgressBar value={score ?? 0} />
+      </View>
       <AppText variant="h2">{lesson.title}</AppText>
       <AppText variant="muted">{lesson.summary}</AppText>
+      <CoachBubble text="Read the short idea, then prove it with practice. No passive scrolling." emoji="🌱" />
       {lesson.content.map((block) => (
         <Card key={block.heading}>
           <AppText variant="h3">{block.heading}</AppText>
           <AppText>{block.body}</AppText>
           {block.example && <AppText variant="muted">Example: {block.example}</AppText>}
-          {block.aiAgeWhy && <AppText style={{ color: colors.accent }}>AI-age lens: {block.aiAgeWhy}</AppText>}
+          {block.aiAgeWhy && <AppText style={{ color: colors.accentStrong }}>AI-age lens: {block.aiAgeWhy}</AppText>}
           {block.reflectionPrompt && <AppText variant="small">Reflection: {block.reflectionPrompt}</AppText>}
         </Card>
       ))}
-      <AppText variant="h3">Practice</AppText>
+      <AppText variant="h3">Practice round</AppText>
       {lessonQuestions.map((question) => (
-        <Card key={question.id}>
+        <Card key={question.id} playful={score !== null && isAnswerCorrect(answers[question.id], question.correctAnswer)}>
           <AppText>{question.prompt}</AppText>
           {question.options.map((option) => (
             <OptionCard key={option} label={option} selected={answers[question.id] === option} onPress={() => setAnswers({ ...answers, [question.id]: option })} />
           ))}
           {score !== null && (
-            <AppText variant="small" style={{ color: isAnswerCorrect(answers[question.id], question.correctAnswer) ? colors.success : colors.warning }}>
+            <AppText variant="small" style={{ color: isAnswerCorrect(answers[question.id], question.correctAnswer) ? colors.accentStrong : colors.orange }}>
               {isAnswerCorrect(answers[question.id], question.correctAnswer) ? 'Correct. ' : 'Not yet. '}{question.explanation}
             </AppText>
           )}
@@ -59,10 +65,10 @@ export default function LessonScreen() {
       {score === null ? (
         <Button onPress={() => { track('lesson_started', { lessonId: lesson.id }); submit(); }} disabled={lessonQuestions.some((question) => !answers[question.id])}>Submit mastery check</Button>
       ) : (
-        <Card>
+        <Card playful={score >= lesson.masteryThreshold}>
           <AppText variant="h2">{score}%</AppText>
-          <AppText>{score >= lesson.masteryThreshold ? 'Mastery achieved. Nice deliberate practice.' : 'Not mastered yet. This miss has been scheduled for review.'}</AppText>
-          <Button onPress={() => router.back()}>Back to curriculum</Button>
+          <AppText>{score >= lesson.masteryThreshold ? 'Mastery achieved. Quest complete.' : 'Not mastered yet. Good miss — this is now review fuel.'}</AppText>
+          <Button onPress={() => router.back()}>Back to map</Button>
         </Card>
       )}
     </Screen>

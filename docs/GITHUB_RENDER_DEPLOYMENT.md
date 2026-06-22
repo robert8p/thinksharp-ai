@@ -7,7 +7,7 @@ This repository is ready to push to GitHub and deploy to Render as a Static Site
 
 For a non-technical deployment, use the root-level file `START_HERE_NO_CODE_DEPLOYMENT.md`. It gives browser-only and GitHub Desktop options, plus the exact Render settings.
 
-The most important check is that `render.yaml` and `package.json` are visible on the first page of the GitHub repository. If they are inside a nested `thinksharp-ai` folder, Render Blueprint may not detect the app correctly.
+The most important check is that `render.yaml` and `package.json` are visible on the first page of the GitHub repository. If they are inside a nested `humanity` folder, Render Blueprint may not detect the app correctly.
 
 ## Recommended deployment shape
 
@@ -22,9 +22,9 @@ The most important check is that `render.yaml` and `package.json` are visible on
 ```bash
 git init
 git add .
-git commit -m "Initial ThinkSharp AI MVP"
+git commit -m "Initial Humanity MVP"
 git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/thinksharp-ai.git
+git remote add origin https://github.com/YOUR_USERNAME/humanity.git
 git push -u origin main
 ```
 
@@ -49,7 +49,7 @@ npm run build:web
 The Blueprint creates one Static Site:
 
 ```yaml
-name: thinksharp-ai
+name: humanity
 runtime: static
 buildCommand: npm install && npm run build:render
 staticPublishPath: ./dist

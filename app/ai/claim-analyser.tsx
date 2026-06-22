@@ -7,6 +7,8 @@ import { router } from 'expo-router';
 import { AppText } from '@/components/AppText';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
+import { CoachBubble } from '@/components/CoachBubble';
+import { FunHeader } from '@/components/FunHeader';
 import { Screen } from '@/components/Screen';
 import { useAppStore } from '@/features/app/store';
 import { canUseClaimAnalysis } from '@/features/subscriptions/gating';
@@ -41,13 +43,14 @@ export default function ClaimAnalyserScreen() {
 
   return (
     <Screen>
-      <AppText variant="h2">Claim Analyser</AppText>
-      <Card muted><AppText variant="small">This is a thinking aid, not a truth oracle. Do not paste confidential company, legal, medical, financial, or personal data.</AppText></Card>
+      <FunHeader emoji="🔎" title="Claim checker" subtitle="Paste a claim and turn it into better questions." />
+      <CoachBubble text="I won’t tell you what to believe. I’ll help you inspect assumptions, evidence, weaknesses, and uncertainty." emoji="🤖" />
+      <Card muted><AppText variant="small">Thinking aid only. Do not paste confidential company, legal, medical, financial, or personal data.</AppText></Card>
       <Controller control={control} name="claim" render={({ field }) => <TextInput multiline placeholder="Paste a claim or argument..." placeholderTextColor={colors.textMuted} value={field.value} onChangeText={field.onChange} style={styles.input} />} />
       {errors.claim && <AppText variant="small">{errors.claim.message}</AppText>}
       <Button loading={loading} onPress={handleSubmit(submit)}>Analyse claim</Button>
-      {result && <Card>
-        <AppText variant="h3">Structured analysis</AppText>
+      {result && <Card playful>
+        <AppText variant="h3">Thinking scan</AppText>
         <AppText>Claim: {result.claim}</AppText>
         <AppText variant="h3">Assumptions</AppText>
         {result.assumptions.map((item) => <AppText key={item}>• {item}</AppText>)}
@@ -62,5 +65,5 @@ export default function ClaimAnalyserScreen() {
 }
 
 const styles = StyleSheet.create({
-  input: { minHeight: 150, color: colors.text, borderColor: colors.border, borderWidth: 1, borderRadius: radii.lg, padding: spacing.md, textAlignVertical: 'top', backgroundColor: colors.bgSoft }
+  input: { minHeight: 150, color: colors.text, borderColor: colors.border, borderWidth: 2, borderBottomWidth: 5, borderRadius: radii.lg, padding: spacing.md, textAlignVertical: 'top', backgroundColor: colors.white }
 });

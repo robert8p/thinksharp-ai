@@ -1,44 +1,32 @@
 import { useState } from 'react';
+import { router } from 'expo-router';
 import { AppText } from '@/components/AppText';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
+import { CoachBubble } from '@/components/CoachBubble';
+import { FunHeader } from '@/components/FunHeader';
 import { OptionCard } from '@/components/OptionCard';
 import { Screen } from '@/components/Screen';
 import { aiChallengeQuestions, useAppStore } from '@/features/app/store';
-import { isPremiumTier } from '@/features/subscriptions/gating';
 import { aiProvider, AIChallengeExplanationOutput } from '@/services/ai';
-import { router } from 'expo-router';
 
-export default function ChallengeAIScreen() {
-  const question = aiChallengeQuestions[0];
-  const [selected, setSelected] = useState<string[]>([]);
-  const [feedback, setFeedback] = useState<AIChallengeExplanationOutput>();
-  const [loading, setLoading] = useState(false);
-  const tier = useAppStore((state) => state.profile.subscriptionTier);
+export default function ChallengeAiScreen() {
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [score, setScore] = useState<number | null>(null);
+  const [explanation, setExplanation] = useState<AIChallengeExplanationOutput>();
   const completePractice = useAppStore((state) => state.completePractice);
-  const toggle = (option: string) => setSelected((current) => current.includes(option) ? current.filter((item) => item !== option) : [...current, option]);
+  const questions = aiChallengeQuestions.slice(0, 3);
   const submit = async () => {
-    if (!isPremiumTier(tier)) { router.push('/paywall'); return; }
-    setLoading(true);
-    try {
-      completePractice([question.id], { [question.id]: selected });
-      setFeedback(await aiProvider.explainAIChallenge(question.prompt));
-    } finally {
-      setLoading(false);
-    }
+    const nextScore = completePractice(questions.map((question) => question.id), answers);
+    setScore(nextScore);
+    setExplanation(await aiProvider.explainAIChallenge(Object.values(answers).join(', ')));
   };
   return (
     <Screen>
-      <AppText variant="h2">Challenge AI</AppText>
-      <Card><AppText>{question.prompt}</AppText></Card>
-      {question.options.map((option) => <OptionCard key={option} label={option} selected={selected.includes(option)} onPress={() => toggle(option)} />)}
-      <Button loading={loading} onPress={submit}>Submit challenge</Button>
-      {feedback && <Card>
-        <AppText variant="h3">Expert feedback</AppText>
-        <AppText>Unsupported: {feedback.unsupportedClaims.join(' ')}</AppText>
-        <AppText>Missing caveats: {feedback.missingCaveats.join(' ')}</AppText>
-        <AppText>Verification: {feedback.verificationSteps.join(' → ')}</AppText>
-      </Card>}
+      <FunHeader emoji="🤖" title="Challenge the chatbot" subtitle="Spot the flaw in a polished AI-style answer." />
+      <CoachBubble text="Fluent is not the same as true. Look for unsupported claims, missing caveats, weak evidence, and overconfidence." emoji="🛡️" />
+      {questions.map((question) => <Card key={question.id}><AppText>{question.prompt}</AppText>{question.options.map((option) => <OptionCard key={option} label={option} selected={answers[question.id] === option} onPress={() => setAnswers({ ...answers, [question.id]: option })} />)}</Card>)}
+      {score === null ? <Button onPress={submit}>Check my challenge</Button> : <Card playful><AppText variant="h2">{score}%</AppText><AppText>{explanation ? `Better version: ${explanation.improvedAnswer}` : 'Good practice. Keep asking what is supported, missing, or too certain.'}</AppText><Button onPress={() => router.back()}>Back</Button></Card>}
     </Screen>
   );
 }

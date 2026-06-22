@@ -1,4 +1,4 @@
-ThinkSharp AI — Render Static Site Settings
+Humanity — Render Static Site Settings
 
 Use these if deploying manually instead of Blueprint.
 
@@ -6,7 +6,7 @@ Service type:
 Static Site
 
 Repository:
-Your GitHub thinksharp-ai repository
+Your GitHub humanity repository
 
 Branch:
 main

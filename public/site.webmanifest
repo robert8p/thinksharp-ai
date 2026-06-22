@@ -1,9 +1,9 @@
 {
-  "name": "ThinkSharp AI",
-  "short_name": "ThinkSharp",
-  "description": "Your daily workout for better judgment in the AI age.",
+  "name": "Humanity",
+  "short_name": "Humanity",
+  "description": "A friendly daily workout for better judgment in the AI age.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#07111F",
-  "theme_color": "#07111F"
+  "background_color": "#F7FFF4",
+  "theme_color": "#58CC02"
 }

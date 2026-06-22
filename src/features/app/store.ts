@@ -30,8 +30,8 @@ interface AppState {
 
 const initialProfile: UserProfile = {
   id: 'demo-user',
-  email: 'demo@thinksharp.ai',
-  displayName: 'Demo Thinker',
+  email: 'demo@humanity.app',
+  displayName: 'Demo Learner',
   onboardingCompleted: false,
   subscriptionTier: 'free',
   currentLevel: 'Novice',

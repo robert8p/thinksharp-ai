@@ -5,7 +5,7 @@ import { AppText } from '@/components/AppText';
 
 interface Props extends PropsWithChildren {
   onPress?: () => void;
-  variant?: 'primary' | 'secondary' | 'ghost' | 'premium';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'premium' | 'sky';
   disabled?: boolean;
   loading?: boolean;
   style?: ViewStyle;
@@ -30,13 +30,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.lg,
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 1,
-    minHeight: 52
+    borderWidth: 2,
+    borderBottomWidth: 5,
+    minHeight: 54
   },
-  primary: { backgroundColor: colors.accentStrong, borderColor: colors.accentStrong },
-  secondary: { backgroundColor: colors.cardMuted, borderColor: colors.border },
+  primary: { backgroundColor: colors.accent, borderColor: colors.accentStrong },
+  secondary: { backgroundColor: colors.white, borderColor: colors.border },
   ghost: { backgroundColor: 'transparent', borderColor: colors.border },
-  premium: { backgroundColor: colors.premium, borderColor: colors.premium },
-  pressed: { opacity: 0.68 },
-  text: { ...typography.body, fontWeight: '800', color: colors.white }
+  premium: { backgroundColor: colors.premium, borderColor: '#D78500' },
+  sky: { backgroundColor: colors.sky, borderColor: '#0B91D0' },
+  pressed: { opacity: 0.72, transform: [{ translateY: 2 }] },
+  text: { ...typography.body, fontWeight: '900', color: colors.text }
 });

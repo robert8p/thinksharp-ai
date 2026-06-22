@@ -1,6 +1,6 @@
-# ThinkSharp AI
+# Humanity
 
-ThinkSharp AI is a production-oriented Expo + React Native MVP that helps adults master critical thinking in the age of AI. It is built around a daily mastery loop: open the app, complete one high-value thinking challenge, receive immediate feedback, update skill scores, schedule spaced review, and get the next best action.
+Humanity is a production-oriented Expo + React Native MVP that helps adults master critical thinking in the age of AI. It is built around a daily mastery loop: open the app, complete one high-value thinking challenge, receive immediate feedback, update skill scores, schedule spaced review, and get the next best action.
 
 The product is intentionally not a passive course. Every core lesson includes practice, feedback, a mastery threshold, skill score updates, and review scheduling.
 
@@ -22,6 +22,13 @@ RENDER_SETTINGS_QUICK_REFERENCE.txt
 GITHUB_UPLOAD_CHECKLIST.txt
 ```
 
+
+## Design direction
+
+Humanity uses a friendly, quest-based interface designed to make critical thinking feel accessible rather than academic. The UI is bright, rounded, encouraging, and progress-led: daily quests, XP, streaks, badges, coach bubbles, learning maps, and visible mastery. The app keeps the serious learning engine underneath — mastery checks, retries, spaced review, skill scores, and AI-safety caveats — but presents it in a way that feels welcoming for beginners and useful for experts.
+
+The design is inspired by the appeal of playful habit-building products while avoiding any copied third-party branding, mascots, artwork, or protected visual identity.
+
 ## Tech stack
 
 - Expo + React Native + TypeScript
@@ -32,7 +39,7 @@ GITHUB_UPLOAD_CHECKLIST.txt
 - Deterministic mock AI fallback when no OpenAI key is present
 - RevenueCat-ready subscription abstraction with mock premium toggle
 - React Hook Form + Zod for validated forms
-- Clean theme system for premium dark-mode-first UI
+- Clean playful theme system for friendly, accessible UI
 - Jest + jest-expo tests for learning logic
 - EAS-ready configuration
 
@@ -155,9 +162,9 @@ Included deployment files:
 ```bash
 git init
 git add .
-git commit -m "Initial ThinkSharp AI MVP"
+git commit -m "Initial Humanity MVP"
 git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/thinksharp-ai.git
+git remote add origin https://github.com/YOUR_USERNAME/humanity.git
 git push -u origin main
 ```
 
@@ -369,7 +376,7 @@ eas build --profile production --platform all
 
 ### Title
 
-ThinkSharp AI
+Humanity
 
 ### Subtitle
 
@@ -377,22 +384,22 @@ Daily critical-thinking training for the AI age.
 
 ### Short description
 
-Your daily workout for better judgment. Practise spotting weak arguments, bias, misinformation, AI hallucinations, and flawed decisions.
+A friendly daily workout for better judgment. Practise spotting weak arguments, bias, misinformation, AI hallucinations, and flawed decisions.
 
 ### Long description
 
-ThinkSharp AI helps adults think clearly in a noisy world. Train your judgment through daily scenarios, AI challenge drills, bias detection, fallacy spotting, claim analysis, and decision premortems.
+Humanity helps adults think clearly in a noisy world. Train your judgment through daily scenarios, AI challenge drills, bias detection, fallacy spotting, claim analysis, and decision premortems.
 
-This is not a passive course. Every session asks you to practise: judge an argument, challenge an AI answer, identify assumptions, analyse evidence, or improve a decision. ThinkSharp AI tracks your skill scores, schedules missed concepts for review, and recommends the next best action so improvement becomes visible.
+This is not a passive course. Every session asks you to practise: judge an argument, challenge an AI answer, identify assumptions, analyse evidence, or improve a decision. Humanity tracks your skill scores, schedules missed concepts for review, and recommends the next best action so improvement becomes visible.
 
-Use ThinkSharp AI to:
+Use Humanity to:
 
 - Challenge AI before AI challenges your judgment
 - Spot misinformation and overconfident claims
 - Improve workplace decision quality
 - Practise evidence evaluation
 - Recognise cognitive biases and logical fallacies
-- Build a sharper, calmer thinking habit
+- Build a clearer, calmer thinking habit
 
 AI outputs are reasoning support, not authoritative truth. Do not use the app as medical, legal, financial, or professional advice.
 
@@ -402,22 +409,22 @@ critical thinking, AI literacy, reasoning, decision making, misinformation, bias
 
 ### Screenshots list
 
-1. Welcome: Master critical thinking in the age of AI
+1. Welcome: think better, one tiny quest at a time
 2. Diagnostic: 5-minute thinking test
 3. Thinking Profile: skill breakdown
-4. Home: today’s sharpest next move
-5. Daily Training: focused reasoning rep
+4. Home: today’s friendly daily quest
+5. Daily Quest: focused reasoning rep
 6. Lesson: explanation plus active practice
 7. Claim Analyser: assumptions and evidence needed
 8. Challenge AI: find unsupported claims
 9. Progress: mastery, streak, badges
-10. Paywall: unlock premium training path
+10. Humanity Plus: unlock the full training path
 
 ### Launch landing page copy
 
-Headline: Your daily workout for better judgment.
+Headline: A friendly daily workout for better judgment.
 
-Subheadline: Master critical thinking for the AI age with short daily scenarios, AI challenge drills, bias training, and decision premortems.
+Subheadline: Build better judgment with friendly daily quests, AI challenge drills, bias training, and decision premortems.
 
 CTA: Take the 5-minute thinking test.
 
@@ -497,4 +504,4 @@ Pricing copy:
 
 ## Product guardrails
 
-ThinkSharp AI should not overclaim intelligence improvement or outsource judgment to AI. The product wins by making users practise judgment repeatedly, receive feedback, improve mastery scores, and transfer the skill to real-world decisions.
+Humanity should not overclaim intelligence improvement or outsource judgment to AI. The product wins by making users practise judgment repeatedly, receive feedback, improve mastery scores, and transfer the skill to real-world decisions.

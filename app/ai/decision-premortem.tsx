@@ -7,6 +7,8 @@ import { router } from 'expo-router';
 import { AppText } from '@/components/AppText';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
+import { CoachBubble } from '@/components/CoachBubble';
+import { FunHeader } from '@/components/FunHeader';
 import { Screen } from '@/components/Screen';
 import { useAppStore } from '@/features/app/store';
 import { isPremiumTier } from '@/features/subscriptions/gating';
@@ -37,11 +39,12 @@ export default function DecisionPremortemScreen() {
   };
   return (
     <Screen>
-      <AppText variant="h2">Decision Premortem</AppText>
+      <FunHeader emoji="🛡️" title="Decision premortem" subtitle="Imagine the decision failed, then make it stronger before you act." />
+      <CoachBubble text="This is for clearer thinking, not professional advice. Keep high-stakes decisions with the right experts." />
       <Card muted><AppText variant="small">Decision-support only. Do not paste confidential or high-risk personal data.</AppText></Card>
       <Controller control={control} name="decision" render={({ field }) => <TextInput multiline placeholder="Describe the decision, desired outcome, and constraints..." placeholderTextColor={colors.textMuted} value={field.value} onChangeText={field.onChange} style={styles.input} />} />
       <Button loading={loading} onPress={handleSubmit(submit)}>Run premortem</Button>
-      {result && <Card>
+      {result && <Card playful>
         <AppText variant="h3">Likely failure causes</AppText>
         {result.likelyFailureModes.map((item) => <AppText key={item}>• {item}</AppText>)}
         <AppText variant="h3">Mitigations</AppText>
@@ -55,5 +58,5 @@ export default function DecisionPremortemScreen() {
 }
 
 const styles = StyleSheet.create({
-  input: { minHeight: 170, color: colors.text, borderColor: colors.border, borderWidth: 1, borderRadius: radii.lg, padding: spacing.md, textAlignVertical: 'top', backgroundColor: colors.bgSoft }
+  input: { minHeight: 170, color: colors.text, borderColor: colors.border, borderWidth: 2, borderBottomWidth: 5, borderRadius: radii.lg, padding: spacing.md, textAlignVertical: 'top', backgroundColor: colors.white }
 });

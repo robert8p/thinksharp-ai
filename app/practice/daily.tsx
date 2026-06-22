@@ -2,6 +2,8 @@ import { router } from 'expo-router';
 import { AppText } from '@/components/AppText';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
+import { CoachBubble } from '@/components/CoachBubble';
+import { FunHeader } from '@/components/FunHeader';
 import { Screen } from '@/components/Screen';
 import { useAppStore, useDailyRecommendation } from '@/features/app/store';
 import { skillLabels } from '@/utils/format';
@@ -20,12 +22,13 @@ export default function DailyTrainingScreen() {
   };
   return (
     <Screen>
-      <AppText variant="h2">Daily Training</AppText>
-      <Card>
+      <FunHeader emoji="⚡" title="Today’s tiny quest" subtitle="Five minutes is enough to keep the habit alive." />
+      <Card playful>
         <AppText variant="h3">{recommendation.title}</AppText>
-        <AppText variant="muted">{recommendation.reason}</AppText>
-        <AppText>Focus: {skillLabels[recommendation.skillFocus]}</AppText>
+        <AppText>{recommendation.reason}</AppText>
+        <AppText variant="small">Focus: {skillLabels[recommendation.skillFocus]}</AppText>
       </Card>
+      <CoachBubble text="Your mission is simple: make one judgment, get feedback, then carry one better question into the day." emoji="🎯" />
       <Button onPress={start}>Begin focused rep</Button>
       <Button variant="secondary" onPress={() => { completeDailyTraining(80, recommendation.skillFocus); router.replace('/(tabs)'); }}>Mark demo session complete</Button>
       <Card muted>

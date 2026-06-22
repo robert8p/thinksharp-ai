@@ -1,4 +1,4 @@
-# ThinkSharp AI Privacy Placeholder
+# Humanity Privacy Placeholder
 
 This file is a product placeholder and must be reviewed before launch.
 

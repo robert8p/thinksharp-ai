@@ -1,24 +1,24 @@
 {
   "expo": {
-    "name": "ThinkSharp AI",
-    "slug": "thinksharp-ai",
-    "scheme": "thinksharpai",
+    "name": "Humanity",
+    "slug": "humanity",
+    "scheme": "humanity",
     "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
-      "backgroundColor": "#07111F"
+      "backgroundColor": "#F7FFF4"
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.thinksharp.ai"
+      "bundleIdentifier": "com.humanity.thinking"
     },
     "android": {
-      "package": "com.thinksharp.ai",
+      "package": "com.humanity.thinking",
       "adaptiveIcon": {
-        "backgroundColor": "#07111F"
+        "backgroundColor": "#F7FFF4"
       }
     },
     "web": {

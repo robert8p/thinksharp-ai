@@ -3,31 +3,29 @@ import { router } from 'expo-router';
 import { AppText } from '@/components/AppText';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
+import { CoachBubble } from '@/components/CoachBubble';
+import { FunHeader } from '@/components/FunHeader';
 import { OptionCard } from '@/components/OptionCard';
 import { Screen } from '@/components/Screen';
-import { biasDrills } from '@/data/seedContent';
-import { useAppStore } from '@/features/app/store';
-import { isAnswerCorrect } from '@/features/progress/mastery';
-import { colors } from '@/theme/theme';
+import { questions, useAppStore } from '@/features/app/store';
 
 export default function BiasDetectorScreen() {
-  const question = biasDrills[0];
-  const [answer, setAnswer] = useState<string>();
+  const biasQuestions = questions.filter((question) => question.skillArea === 'bias_detection').slice(0, 3);
+  const [answers, setAnswers] = useState<Record<string, string>>({});
   const [score, setScore] = useState<number | null>(null);
   const completePractice = useAppStore((state) => state.completePractice);
+  const submit = () => setScore(completePractice(biasQuestions.map((question) => question.id), answers));
   return (
     <Screen>
-      <AppText variant="h2">Bias Detector</AppText>
-      <Card><AppText>{question.prompt}</AppText></Card>
-      {question.options.map((option) => <OptionCard key={option} label={option} selected={answer === option} onPress={() => setAnswer(option)} />)}
-      {score === null ? <Button disabled={!answer} onPress={() => setScore(completePractice([question.id], { [question.id]: answer ?? '' }))}>Submit</Button> : (
-        <Card>
-          <AppText variant="h2">{score}%</AppText>
-          <AppText style={{ color: isAnswerCorrect(answer, question.correctAnswer) ? colors.success : colors.warning }}>{question.explanation}</AppText>
-          <AppText variant="muted">Corrective strategy: ask what evidence would change your mind.</AppText>
-          <Button onPress={() => router.back()}>Done</Button>
+      <FunHeader emoji="🧠" title="Bias Detector" subtitle="Notice the mental shortcut, then choose a better move." />
+      <CoachBubble text="Biases are normal. The skill is catching them early enough to adjust." emoji="🌱" />
+      {biasQuestions.map((question) => (
+        <Card key={question.id}>
+          <AppText>{question.prompt}</AppText>
+          {question.options.map((option) => <OptionCard key={option} label={option} selected={answers[question.id] === option} onPress={() => setAnswers({ ...answers, [question.id]: option })} />)}
         </Card>
-      )}
+      ))}
+      {score === null ? <Button onPress={submit}>Reveal feedback</Button> : <Card playful><AppText variant="h2">{score}%</AppText><AppText>{score >= 85 ? 'Nice catch. Your bias radar is warming up.' : 'That is exactly what practice is for.'}</AppText><Button onPress={() => router.back()}>Back</Button></Card>}
     </Screen>
   );
 }

@@ -11,7 +11,7 @@ The corrected service block starts like this:
 ```yaml
 services:
   - type: web
-    name: thinksharp-ai
+    name: humanity
     runtime: static
     buildCommand: npm install && npm run build:render
     staticPublishPath: ./dist
@@ -19,7 +19,7 @@ services:
 
 ## If Render still fails to detect the app
 
-Check GitHub first. `render.yaml` and `package.json` must be visible at the repository root. If they are inside another `thinksharp-ai` folder, recreate the repo upload so the contents of the folder are at the root.
+Check GitHub first. `render.yaml` and `package.json` must be visible at the repository root. If they are inside another `humanity` folder, recreate the repo upload so the contents of the folder are at the root.
 
 ## If the build fails on dependencies
 
