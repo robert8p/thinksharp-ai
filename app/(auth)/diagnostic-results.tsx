@@ -5,6 +5,7 @@ import { Card } from '@/components/Card';
 import { CoachBubble } from '@/components/CoachBubble';
 import { FunHeader } from '@/components/FunHeader';
 import { SkillList } from '@/components/SkillList';
+import { Screen } from '@/components/Screen';
 import { useAppStore } from '@/features/app/store';
 
 export default function DiagnosticResultsScreen() {
