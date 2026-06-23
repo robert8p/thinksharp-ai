@@ -1,5 +1,9 @@
 # Humanity
 
+## Latest product update
+
+Humanity now uses bite-sized lesson quests after the diagnostic. Lessons step users through one small concept at a time, with a progress bar, practice hearts, instant check-answer feedback, XP reward state, and retry flow if mastery is not achieved.
+
 Humanity is a production-oriented Expo + React Native MVP that helps adults master critical thinking in the age of AI. It is built around a daily mastery loop: open the app, complete one high-value thinking challenge, receive immediate feedback, update skill scores, schedule spaced review, and get the next best action.
 
 The product is intentionally not a passive course. Every core lesson includes practice, feedback, a mastery threshold, skill score updates, and review scheduling.

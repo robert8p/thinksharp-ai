@@ -9,7 +9,8 @@ import { ProgressBar } from '@/components/ProgressBar';
 import { Screen } from '@/components/Screen';
 import { SkillList } from '@/components/SkillList';
 import { StatPill } from '@/components/StatPill';
-import { lessons, useAppStore, useDailyRecommendation } from '@/features/app/store';
+import { lessons, questions, useAppStore, useDailyRecommendation } from '@/features/app/store';
+import { getLessonStepCountLabel } from '@/features/curriculum/lessonSteps';
 import { getOverallMastery, getLevelTitle } from '@/features/progress/mastery';
 import { canUseClaimAnalysis } from '@/features/subscriptions/gating';
 import { skillLabels } from '@/utils/format';
@@ -53,7 +54,8 @@ export default function HomeScreen() {
         <AppText variant="h3">Next lesson</AppText>
         <AppText>{nextLesson.title}</AppText>
         <AppText variant="muted">{nextLesson.summary}</AppText>
-        <Button variant="sky" onPress={() => router.push(`/lesson/${nextLesson.id}`)}>Open lesson</Button>
+        <AppText variant="small">{getLessonStepCountLabel(nextLesson, questions.filter((question) => question.lessonId === nextLesson.id))}</AppText>
+        <Button variant="sky" onPress={() => router.push(`/lesson/${nextLesson.id}`)}>Start bite-sized quest</Button>
       </Card>
       <View style={{ gap: 10 }}>
         <Button variant="secondary" onPress={() => router.push('/practice/review')}>🧩 {reviews.length} review items</Button>

@@ -80,3 +80,32 @@ npm run ci
 ```
 
 Known limitation: because dependencies could not be fully installed in this sandbox, full TypeScript, Jest, and Expo web export validation still need to run through GitHub Actions or your local machine after upload.
+
+## Lesson gamification tranche validation
+
+Date: 2026-06-22
+
+Changes made:
+- Added `src/features/curriculum/lessonSteps.ts` to generate bite-sized lesson quests.
+- Rebuilt `app/lesson/[id].tsx` into a one-step-at-a-time quest flow with progress, hearts, check-answer feedback, XP/result state, and retry path.
+- Updated Home and Learn screens to describe lessons as bite-sized quests.
+- Added `__tests__/lessonSteps.test.ts` for lesson-step generation.
+
+Validation completed in this environment:
+- TypeScript transpilation check passed for changed files:
+  - `app/lesson/[id].tsx`
+  - `app/(tabs)/index.tsx`
+  - `app/(tabs)/learn.tsx`
+  - `src/features/curriculum/lessonSteps.ts`
+  - `__tests__/lessonSteps.test.ts`
+- Lightweight runtime validation confirmed the first post-diagnostic lesson now produces 7 steps:
+  - intro
+  - idea
+  - example
+  - ai_age
+  - reflection
+  - question
+  - takeaway
+
+Known validation limitation:
+- Full `npm install`, `npm run typecheck`, and `npm test` still require dependency installation in the target GitHub/Render environment. The sandbox package does not include `node_modules`.

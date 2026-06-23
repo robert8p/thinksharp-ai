@@ -1,5 +1,9 @@
 # Humanity — No-Code GitHub + Render Deployment
 
+## Latest product update
+
+Humanity now uses bite-sized lesson quests after the diagnostic. Lessons step users through one small concept at a time, with a progress bar, practice hearts, instant check-answer feedback, XP reward state, and retry flow if mastery is not achieved.
+
 This package is ready to deploy as a web app on Render without editing code.
 
 ## What you will do
